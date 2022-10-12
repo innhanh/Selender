@@ -1,9 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAdminSuccess } from '../redux/authenSlice';
+import { Selector } from '../redux/selector';
 
 function LoginPage(props) {
+    const dispath = useDispatch();
     const [userName, setUsername] = useState("");
     const [pass, setPass] = useState("");
+
+    const Admin = useSelector(Selector.Authen.SelectorAdmin);
+    console.log(Admin)
     const handleLogin = async () => {
         await axios({
             method: "post",
@@ -13,7 +20,8 @@ function LoginPage(props) {
                 pass: pass
             }
         }).then((res) => {
-            console.log(res.data)
+            console.log(res.data);
+            dispath(loginAdminSuccess(res.data))
         }).catch((err) => {
             console.log(err)
         })
