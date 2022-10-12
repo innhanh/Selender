@@ -1,0 +1,22 @@
+#hearder {
+    background-color: $blue700;
+    color: white;
+    .navbar {
+        .navbar-brand {
+            img {
+                max-width: 80px;
+            }
+        }
+        .navbar-toggler {
+        }
+        .innhanh_navbar {
+            .navbar-nav {
+                .nav-item {
+                    .nav-link {
+                        color: white !important;
+                    }
+                }
+            }
+        }
+    }
+}
