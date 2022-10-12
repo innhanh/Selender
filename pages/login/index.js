@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAdminSuccess } from '../redux/authenSlice';
-import { Selector } from '../redux/selector';
+import { loginAdminSuccess } from '../../redux/authenSlice';
+import { Selector } from '../../redux/selector';
 
 function LoginPage(props) {
     const dispath = useDispatch();
@@ -10,7 +10,7 @@ function LoginPage(props) {
     const [pass, setPass] = useState("");
 
     const Admin = useSelector(Selector.Authen.SelectorAdmin);
-    console.log(Admin)
+      
     const handleLogin = async () => {
         await axios({
             method: "post",
@@ -27,10 +27,10 @@ function LoginPage(props) {
         })
     }
     return (
-        <div id='login'>
+        <div id='login' className='container'>
             <input type={"text"} onChange={(e) => setUsername(e.target.value)} value={userName} />
             <input type={"text"} onChange={(e) => setPass(e.target.value)} value={pass} />
-            <button onClick={() => handleLogin()}>Login</button>
+            <button className='btn btn-primary' onClick={() => handleLogin()}>Login</button>
         </div>
     );
 }
